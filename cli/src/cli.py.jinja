@@ -1,0 +1,25 @@
+import click
+import logging
+
+import {{package_name}}
+
+CONTEXT_SETTINGS = dict(help_option_names=['-h', '--help'])
+
+def set_log_level(verbose):
+    log_level = logging.WARNING
+    if verbose == 1:
+        log_level = logging.INFO
+    if verbose >= 2:
+        log_level = logging.DEBUG
+    logging.basicConfig(level=log_level)
+
+@click.group()
+@click.option('-v', '--verbose', count=True, help="Enable more logging. More -v's for more logging")
+def task(verbose):
+    set_log_level(verbose)
+
+
+@task.command()
+@click.option('-i', required=True)
+def first_command(i):
+    {{package_name}}.foo.first_command(i)

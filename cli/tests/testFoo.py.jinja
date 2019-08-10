@@ -1,0 +1,15 @@
+from unittest.mock import patch
+import unittest
+
+from {{package_name}} import foo
+
+class testFoo(unittest.TestCase):
+    
+    def setUp(self):
+        pass
+
+    @patch('builtins.print')
+    def test_first_command(self, mock_print):
+        result = foo.first_command("asdf")
+        mock_print.assert_called_with("asdf")
+

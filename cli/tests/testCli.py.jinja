@@ -1,0 +1,14 @@
+from unittest.mock import patch
+import unittest
+from click.testing import CliRunner
+
+from {{package_name}} import cli
+
+class testCli(unittest.TestCase):
+    
+    def setUp(self):
+        self.runner = CliRunner()
+
+    def test_first_command(self):
+        result = self.runner.invoke(cli.first_command, ["-i", "foobar"])
+        self.assertFalse(result.exception)
